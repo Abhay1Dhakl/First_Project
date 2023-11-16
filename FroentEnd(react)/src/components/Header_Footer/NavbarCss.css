@@ -1,0 +1,133 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	list-style: none;
+	font-family: "ubuntu";
+}
+
+.nav_logo{
+	height: 100px;
+	width: 100px;
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 50px;
+	background: #d4dde5;
+	z-index: 1000;
+}
+
+header header  .logo {
+	width: 140px;
+}
+
+header nav ul {
+	list-style: none;
+	margin-left: 45px;
+}
+
+header nav ul li {
+position: relative;
+float: left;
+align-items: center;
+padding: 10px;
+}
+
+header nav ul li a {
+	display: block;
+	color: #1c1d1e;
+	font-size: 18px;
+	padding: 20px;
+	transition: 0.2s;
+}
+
+header nav ul li a:hover{
+	color: #fff;
+}
+
+header nav ul li ul {
+	position: absolute;
+	left: -64px;
+	width: 200px;
+	background: #d4dde5;
+	display: none;
+}
+
+header nav ul li ul li {
+	width: 100%;
+	border-top: 1px solid #d4dde5;
+}
+
+header nav ul li ul li ul {
+	left: 123px;
+	top: 0px;
+    padding: -6px;
+}
+
+nav ul li:focus-within > ul,
+nav ul li:hover > ul{
+display: initial;
+background-color: #d4dde5;
+transition: 3s;
+}
+
+#menu-bar{
+	display: none;
+}
+
+header label{
+	font-size: 20px;
+	color: #333 ;
+	cursor: pointer;
+	display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+	header {
+		padding: 20px;
+	}
+
+header label{
+	display: initial;
+}
+
+header nav{
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	background: #d4dde5;
+	border-top: 1px solid rgba(230, 224, 224, 0.1);
+	display: none;
+}
+
+header  nav ul li{
+	width: 100%;
+}
+
+header nav ul li ul{
+	position: relative;
+	width: 100%;
+    
+}
+header nav ul li ul li{
+	background: #d4dde5;
+}
+
+header nav ul li ul li ul{
+	width: 100%;
+	left: 0;
+}
+
+#menu-bar:checked ~ nav{
+display: initial;
+}
+}
