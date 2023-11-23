@@ -1,0 +1,290 @@
+.main {
+	display: flex;
+	margin-top: 50px;
+
+}
+body{
+	display: block;
+}
+
+
+
+
+.heading {
+	margin-top: 100px;
+	margin-left: 70px;
+}
+
+.containt {
+	height: 400px;
+	width: 814px;
+	max-width: 814px;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../components/Images/photo1.jpg");
+	position: relative;
+	background-attachment: fixed;
+	left: 10%;
+	top: 50px;
+	transform: translate(-50px, -50px);
+	background-size: cover;
+	animation: 9s slides infinite;
+}
+
+@keyframes slides {
+	0% {
+		background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../components/Images/photo2.jpg");
+	}
+
+	35% {
+		background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../components/Images/photo3.jpg");
+	}
+
+	75% {
+		background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../components/Images/photo1.jpg");
+	}
+}
+
+
+.Map-overview {
+	margin-left: 70px;
+	margin-top: 55px;
+}
+
+.containts {
+	display: inline-block;
+	width: 800px;
+	height: 260px;
+	box-shadow: 2px 2px 20px black;
+	margin-top: 38px;
+	margin-left: 42px;
+	background-color: #fff;
+}
+
+.containt img {
+	height: 400px;
+	width: 800px;
+}
+
+.details {
+	width: 800px;
+	height: auto;
+	margin-top: 100px;
+	margin-left: 47px;
+	box-shadow: 2px 2px 20px black;
+	background-color: #fff;
+}
+
+.details p {
+	font-size: 19px;
+}
+
+.offer {
+	display: inline-block;
+	box-shadow: 2px 2px 20px black;
+	height: 518px;
+	width: 300px;
+	margin-left: 200px;
+	margin-top: 80px;
+	position: fixed;
+	text-align: center;
+	background-color: #fff;
+}
+
+.price {
+	color: #ff9900;
+	font-weight: 100px;
+}
+
+.date {
+	text-align: center;
+}
+
+.calender {
+	width: 200px;
+}
+
+.nav {
+	list-style: none;
+	display: flex;
+	margin: 10px;
+	font-size: 20px;
+	margin-left: 97px
+}
+
+.nav li {
+	padding-left: 50px;
+}
+
+.subcontaint {
+	display: flex;
+}
+
+.items {
+	display: block;
+	overflow: hidden;
+}
+
+.items ul {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.items .item {
+	display: flex;
+	padding: 21px;
+	margin: -8px;
+	margin-left: 45px;
+}
+
+.items .item-2 {
+	display: flex;
+	padding: 21px;
+	margin: -25px;
+	margin-left: 43px;
+	max-width: 242px;
+}
+
+.items .item-1 {
+	display: flex;
+	padding: 21px;
+	margin: -135px;
+	margin-left: 210px;
+	max-width: 242px;
+}
+
+.items .item h6 {
+	font-size: .8375rem;
+	color: #6c757d;
+	font-weight: 400;
+	margin: 4px;
+}
+
+.items .item-1 h6 {
+	font-size: .8375rem;
+	color: #6c757d;
+	font-weight: 400;
+	margin: 4px;
+}
+
+.items .item-2 h6 {
+	font-size: .8375rem;
+	color: #6c757d;
+	font-weight: 400;
+	margin: 4px;
+}
+
+.items .item-1 h5 {
+	line-height: 1.4;
+	margin: 0;
+	font-family: Roboto, sans-serif;
+}
+
+.items .item-2 h5 {
+	line-height: 1.4;
+	margin: 0;
+	font-family: Roboto, sans-serif;
+}
+
+
+.items .item h5 {
+	line-height: 1.4;
+	margin: 0;
+	font-family: Roboto, sans-serif;
+}
+
+.map img {
+	height: 230px;
+	width: 365px;
+}
+.map{
+	height: 230px;
+	width: 365px;
+}
+
+#check {
+	display: none;
+}
+
+.cont-1 {
+	display: none;
+	transition: 0.5s linear;
+}
+
+label {
+	display: inline-block;
+	margin-top: 15px;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+#check:checked~.cont-1 {
+	display: block;
+}
+
+#check:checked~label {
+	visibility: hidden;
+}
+
+#check:checked~label::after {
+	content: 'Read less...';
+	visibility: visible;
+	display: block;
+}
+
+.main-sec-2 {
+	background-color: #edf3f3;
+	width: 65%;
+}
+
+.main-sec-1 {
+	background-color: #edf3f3;
+	width:35%;
+}
+
+.iternary {
+	margin-left: 72px;
+}
+
+.features {
+	text-align: left;
+	margin-left: 10px;
+}
+
+.EBC-iter {
+	margin-left: 72px;
+}
+
+.num {
+	width: 101px;
+	background-image: linear-gradient(#0044ff, #f1f1df);
+	border: 0 !important;
+	color: #fff !important;
+	padding: 3 25px !important;
+	border-radius: 30px !important;
+	margin: 1px;
+	box-shadow: none;
+	padding: 5px;
+	text-align: center;
+}
+
+.day {
+	color: #0044ff;
+	margin: 25px;
+}
+
+.inclusions {
+	margin-left: 72px;
+}
+
+.button-1 {
+	display: inline-block;
+	margin-top: 20px;
+	background-color: rgb(94, 152, 245);
+	border-radius: 25px;
+	border-color: rgb(94, 152, 245);
+	;
+	width: 100px;
+	height: 34px;
+	text-align: center;
+	justify-content: center;
+}
