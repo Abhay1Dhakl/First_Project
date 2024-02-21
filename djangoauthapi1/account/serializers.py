@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from account.models import User,BookingTable
+from account.models import User,BookingTable,EverestInformation,EverestItinerary,Everest_Included_Ornot,Cards, Pokhara_Included_Ornot, PokharaItinerary,PokharaInformation
 from django.utils.encoding import smart_str, force_bytes, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
@@ -116,3 +116,39 @@ class bookingSerializer(serializers.ModelSerializer):
       fields = ['date','child','adult']
       def booked_data(self, validate_data):
         return User.objects.booked_data(**validate_data)
+
+
+class everest_infoSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = EverestInformation
+    fields = ['para1','para2']
+
+class Everest_ItinerarySerializer(serializers.ModelSerializer):
+  class Meta:
+    model = EverestItinerary
+    fields = ['topic','details']
+
+class Everest_Included_OrnotSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Everest_Included_Ornot
+    fields = ['included', 'excluded']
+
+class Cards_Serializers(serializers.ModelSerializer):
+  class Meta:
+    model = Cards
+    fields = ['heading','descr', 'topic','photo','category']
+
+class Pokhara_infoSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = PokharaInformation
+    fields = ['para1','para2']
+
+class Pokhara_ItinerarySerializer(serializers.ModelSerializer):
+  class Meta:
+    model = PokharaItinerary
+    fields = ['topic','details']
+
+class Pokhara_Included_OrnotSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Pokhara_Included_Ornot
+    fields = ['included', 'excluded']

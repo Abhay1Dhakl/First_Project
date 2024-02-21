@@ -15,14 +15,14 @@ const Dashboard = () => {
   const {access_token} = getToken();
   const {data, isSuccess} = useGetloggeduserQuery(access_token)
 
-  const [userData, setUsetData] = useState({
+  const [userData, setUserData] = useState({
     email: "",
     name: "",
   })
 
   useEffect(() => {
     if(data && isSuccess){
-      setUsetData({
+      setUserData({
         email: data.email,
         name: data.name,
       })
@@ -31,7 +31,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if(data && isSuccess){
-      setUsetData({
+      setUserData({
         email: data.email,
         name: data.name,
       })

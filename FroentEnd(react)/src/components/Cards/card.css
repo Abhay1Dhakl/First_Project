@@ -16,7 +16,7 @@ body{
  }
  .card_animated{
     position:relative;
-    width:200px;
+    width:260px;
     height:300px;
     border-radius:0px 10px 10px 0px;
     background:#f4f4f4;
@@ -59,10 +59,11 @@ body{
     color:#333;
  }
 
- .coverFront img{
-   width: 100px;
-   height: 100px;
- }
+ .coverFront img {
+   width: 260px;
+   margin-top: 37px;
+   height: 230px;
+}
  .coverBack{
     background: #b0c6e7;
     border-radius: 10px 0px 0px 10px;

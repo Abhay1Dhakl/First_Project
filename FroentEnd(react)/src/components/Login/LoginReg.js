@@ -38,7 +38,7 @@ const LoginReg = () => {
         <Card sx={{ width: '100%', height: '100%' }}>
           <Box sx={{ mx: 3, height: 530 }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-              <Tabs value={value} textColor='secondary' indicatorColor='secondary' onChange={handleChange}>
+              <Tabs value={value} textColor='primary' indicatorColor='primary' onChange={handleChange}>
                 <Tab label='Login' sx={{ textTransform: 'none', fontWeight: 'bold' }}></Tab>
                 <Tab label='Registration' sx={{ textTransform: 'none', fontWeight: 'bold' }}></Tab>
               </Tabs>

@@ -91,3 +91,35 @@ class BookingTable(models.Model):
       user.save(using=self._db)
       return user
 
+class EverestInformation(models.Model):
+    para1 = models.CharField(max_length=10000,null=True)
+    para2 = models.CharField(max_length=10000,null=True)
+     
+
+class EverestItinerary(models.Model):
+    topic = models.CharField(max_length=10000,null=True)
+    details = models.CharField(max_length=10000,null=True)
+
+class Everest_Included_Ornot(models.Model):
+    included = models.CharField(max_length=10000,null=True)
+    excluded = models.CharField(max_length=10000,null=True)
+
+class Cards(models.Model):
+    heading= models.CharField(max_length=200,null=True)
+    descr=models.CharField(max_length=2000,null=True)
+    topic=models.CharField(max_length=200,null=True)
+    photo = models.ImageField(upload_to ='uploads/',null= True)
+    category=models.CharField(max_length=200,null=True)
+
+class PokharaInformation(models.Model):
+    para1 = models.CharField(max_length=10000,null=True)
+    para2 = models.CharField(max_length=10000,null=True)
+     
+
+class PokharaItinerary(models.Model):
+    topic = models.CharField(max_length=10000,null=True)
+    details = models.CharField(max_length=10000,null=True)
+
+class Pokhara_Included_Ornot(models.Model):
+    included = models.CharField(max_length=10000,null=True)
+    excluded = models.CharField(max_length=10000,null=True)

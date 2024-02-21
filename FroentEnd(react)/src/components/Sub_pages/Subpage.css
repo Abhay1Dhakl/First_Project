@@ -1,14 +1,33 @@
+.wrapper{
+	width: 100%;
+    height: 100%;
+    display: table;
+    position: relative;
+    table-layout: fixed;
+}
+.Sticky_side{
+	position: sticky;
+  position: -webkit-sticky;
+  top: 0; /* required */
+}
+aside{
+	display: block;
+}
 .main {
 	display: flex;
 	margin-top: 50px;
-
+	flex-wrap: wrap;
+	--fis-gutter-x: 1.875rem;
+    --fis-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1*var(--fis-gutter-y));
+    margin-right: calc(-.5*var(--fis-gutter-x));
+    margin-left: calc(-.5*var(--fis-gutter-x));
 }
 body{
 	display: block;
 }
-
-
-
 
 .heading {
 	margin-top: 100px;
@@ -22,7 +41,7 @@ body{
 	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../components/Images/photo1.jpg");
 	position: relative;
 	background-attachment: fixed;
-	left: 10%;
+	left: 12%;
 	top: 50px;
 	transform: translate(-50px, -50px);
 	background-size: cover;
@@ -55,7 +74,7 @@ body{
 	height: 260px;
 	box-shadow: 2px 2px 20px black;
 	margin-top: 38px;
-	margin-left: 42px;
+	margin-left: 100px;
 	background-color: #fff;
 }
 
@@ -68,9 +87,9 @@ body{
 	width: 800px;
 	height: auto;
 	margin-top: 100px;
-	margin-left: 47px;
-	box-shadow: 2px 2px 20px black;
-	background-color: #fff;
+	margin-left: 100px;
+	/*box-shadow: 2px 2px 20px black;
+	background-color: #fff;*/
 }
 
 .details p {
@@ -79,14 +98,15 @@ body{
 
 .offer {
 	display: inline-block;
-	box-shadow: 2px 2px 20px black;
-	height: 518px;
-	width: 300px;
-	margin-left: 200px;
-	margin-top: 80px;
-	position: fixed;
-	text-align: center;
-	background-color: #fff;
+    box-shadow: 0px 3px 6px #c2c8c8;
+    height: 533px;
+    width: 293px;
+    margin-left: 200px;
+    margin-top: 115px;
+    position: sticky;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
 }
 
 .price {

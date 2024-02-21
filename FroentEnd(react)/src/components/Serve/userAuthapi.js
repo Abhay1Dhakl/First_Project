@@ -66,10 +66,12 @@ export const userAuthapi = createApi({
 				}
 			}
 		}),
+
+		
 	}),
 
 })
   
 
 
-export const { useRegisterUserMutation, useLoginUserMutation, useGetloggeduserQuery, useChangeUserPasswordMutation, useBookingMutation } = userAuthapi
+export const { useRegisterUserMutation, useLoginUserMutation, useGetloggeduserQuery, useChangeUserPasswordMutation, useBookingMutation} = userAuthapi

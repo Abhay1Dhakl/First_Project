@@ -12,6 +12,11 @@
 	width: 100px;
 }
 
+.button1{
+	border-color: #046fbb;
+	background-color: #046fbb;
+	border-radius: 5px;
+}
 header {
 	position: fixed;
 	top: 0;
@@ -51,6 +56,7 @@ header nav ul li a {
 
 header nav ul li a:hover{
 	color: #fff;
+	text-decoration: none;
 }
 
 header nav ul li ul {

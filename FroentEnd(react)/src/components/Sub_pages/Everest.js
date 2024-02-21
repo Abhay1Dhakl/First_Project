@@ -2,15 +2,58 @@ import React, { useState } from 'react'
 import './Subpage.css'
 import map from '../../components/Images/map.jpg'
 import Navbar from '../Header_Footer/Navbar';
-
+import { useGetloggeduserQuery } from '../Serve/userAuthapi';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useBookingMutation } from '../Serve/userAuthapi';
-
+import { useDispatch } from 'react-redux';
 import { TextField, Button, Box, Alert, Typography, CircularProgress } from '@mui/material';
-
+import { getToken, removeToken } from '../Serve/LocalStorageService';
+import axios from "axios"
 export default function Everest() {
+	const[inc_exc, set_inc_exc] = useState([])
+	const [userData, setUserData] = useState([])
+	const [itineraryData, set_itineraryData] = useState([])
 
+	useEffect(() => {
+	 async function getalldata (){
+		try{
+			const userData = await axios.get("http://127.0.0.1:8000/api/user/everest_info/")
+			console.log(userData.data)
+			setUserData(userData.data)
+		}catch(error){ 
+
+		}
+	 }
+	 getalldata ()
+	},[])
+  
+	useEffect(() => {
+		async function getdata (){
+		   try{
+			   const itineraryData = await axios.get("http://127.0.0.1:8000/api/user/everest_itinerary/")
+			   console.log(itineraryData.data)
+			   set_itineraryData(itineraryData.data)
+		   }catch(error){ 
+   
+		   }
+		}
+		getdata ()
+	   },[])
+
+	   useEffect(() => {
+		async function getdata_incexc (){
+		   try{
+			   const inc_exc = await axios.get("http://127.0.0.1:8000/api/user/everest_inc_exc/")
+			   console.log(inc_exc.data)
+			   set_inc_exc(inc_exc.data)
+		   }catch(error){ 
+   
+		   }
+		}
+		getdata_incexc ()
+	   },[])
 	const [booking, { isLoading }] = useBookingMutation();
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const data = new FormData(e.currentTarget);
@@ -39,6 +82,7 @@ export default function Everest() {
 
 	return (
 		<div>
+			<div className='wrapper'>
 			<Navbar></Navbar>
 			<div className="main">
 				<div className="main-sec-2">
@@ -48,6 +92,7 @@ export default function Everest() {
 					<div className="containt">
 
 					</div>
+					
 					<h1 className="Map-overview">Map & OverView</h1>
 					<div className="containts">
 						<div className="subcontaint">
@@ -124,49 +169,17 @@ export default function Everest() {
 					<div className="details">
 						<input type="checkbox" id="check" />
 						<h1>About Everest Base Camp Trek</h1><br />
-						<p>Everest Base Camp is one of the most well-known trekking destinations among adventurers and
-							trekkers.
-							In
-							the shadow of the world's highest peak, this is the most rewarding and exciting walking track.
-							Every
-							year, a huge number of trekkers and tourists visit Nepal to participate in the EBC Trek. Many
-							adventurers dream of visiting Everest Base Camp, and everyone should do so at least once in a
-							lifetime.
-							This trekking trail has already been recommended by renowned travel guides and journals such as
-							Lonely
-							Planet, National Geographic, Discovery, and numerous other travel and tour guide channels. The
-							Everest
-							Base Camp journey is a first-className trekking trail in Nepal, nestled in the shade of the world's
-							highest
-							mountain peaks and offering magnificent villages, holy places, sherpa cultures, Tibetan Buddhism
-							reflections, and rare flora and wildlife in Sagarmatha National Park.</p>
+						{userData.map((userdata, i)=>{
+						return(
+							<p>{userdata.para1}</p>
+						)
+					})}
 						<div className="cont-1">
-							<p>We have designed the 15 days EBC Trek package from Arrival to Departure . This package take
-								you
-								Everest
-								Base camp and Including climb kalapatthar. It is perfect Itinerary for experienced as well
-								as a
-								beginner
-								trekker. In this Itinerary two acclimatization days at Namche and in Dingboche. This will
-								help
-								you to
-								cope with the thin air and changing atmosphere. Altitude sickness is one of the difficulties
-								when
-								trekking to the height of 5545 meters at Kala Patthar. It is because the amount of oxygen at
-								a
-								higher
-								altitude is comparatively low which results in difficulty in br/eathing<br />
-
-								Adventure Great Himalaya Treks & Expeditions presents this delightful and adventurous
-								Everest
-								Base Camp
-								tour where you can release yourself with amazing sceneries of mountains that surround you
-								along
-								with
-								great hospitality of Sherpa the Highlanders of Himalaya, including utmost service of
-								Adventure
-								Great
-								Himalaya Treks & Expeditions expert guides and staff.</p><br />
+						{userData.map((userdata, i)=>{
+						return(
+							<p>{userdata.para2}</p>
+						)
+					})}<br />
 
 							<h1>Highlight of Everest Base Camp Trek </h1>
 							<p>1. Hiking up to the Base Camp of the highest mountain in the world.</p>
@@ -183,407 +196,60 @@ export default function Everest() {
 					</div>
 					<br />
 					<h1 className="EBC-iter">Itinerary of Everest Base Camp Treak</h1>
-					<div className="iternary">
+					
+					{itineraryData.map((itineraryData, i)=>{
+						return(
+							<div className="iternary">
 						<details>
 							<summary>
 								<div className="Heading">
-									<span className="num">
-										1
-									</span>
-									<span className="day">
-										Day 1
-									</span>
-									<h5><b>Arrival at Trubhuban Intl Airport</b></h5>
+								<span className="num">{i+1}</span>
+								<span className="day">Day {i+1}</span>
+								<h5><b>{itineraryData.topic}</b></h5>
 								</div>
 							</summary>
 							<div className="details-content">
-								<p>
-
-								</p>
+							<p>{itineraryData.details}</p>
 							</div>
 						</details>
+						<hr/>
 					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										2
-									</span>
-									<span className="day">
-										Day 2
-									</span>
-									<h5><b> A guided site sightseeing tour of Kathmandu Valley </b></h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p><b>Swyambunath Stupa - The Monkey Temple:</b> <br />
-									<b>Pashupatinath Temple:</b> <br />
-									<b> Boudhanath Stupa:</b>
-									<b>Patan Durbar Square:</b> <br />
-									<h6><b>Overnight Stay in Kathmandu.</b></h6>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										3
-									</span>
-									<span className="day">
-										Day 3
-									</span>
-									<h5><b>Fly to Lukla (2,800 m) from Kathmandu, trek to Phakding (2,651 m):35 min
-										flight/3 -
-										4hours-treck</b></h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p><b>For Lukla flight from Manthali:</b><br />
-									Wake up around 2-3 am, drive to Manthali by shared tourist vehicle for about 4 to 5
-									hours,
-									and fly to Lukla (20 minutes);<br />
-									<b>Overnight stay in Phakding.</b>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										4
-									</span>
-									<span className="day">
-										Day 4
-									</span>
-									<h5><b>Trek from Namche Bazzar: 7 - 8 hours treck</b></h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p>
-									<b>Overnight stay at Namche Bazaar.</b>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										5
-									</span>
-									<span className="day">
-										Day 5
-									</span>
-									<h5><b>Acclimatization Day - Namche Bazzar</b></h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p>
-									Hiking to everest view point and come back to Namche Bazzar.<br />
-									<b>Overnight stay at Namche Bazaar again.</b>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										6
-									</span>
-									<span className="day">
-										Day 6
-									</span>
-									<h5><b>Trek from Namche Bazzar to Tenbonche: 7 - 8 hours treck</b></h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p>
-									<b>Overnight stay at Namche Bazaar.</b>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										7
-									</span>
-									<span className="day">
-										Day 7
-									</span>
-									<h5><b>Trek from Tengboche to Dingboche: 5 - 6 hours treck</b></h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p>
-									<b>Overnight stay at Dingboche</b>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										8
-									</span>
-									<span className="day">
-										Day 8
-									</span>
-									<h5><b>Trek from Dingboche to Loboche: 5 - 6 hours treck</b></h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p>
-									<b>Overnight stay at Loboche.</b>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										9
-									</span>
-									<span className="day">
-										Day 9
-									</span>
-									<h5><b>Trek from Lobuche to Gorak Shep (5,170 m), visit Everest Base Camp(5,364 m): 6- 7
-										hours trek</b></h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p>
-									<b>Overnight stay at Gorak Shep</b>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										10
-									</span>
-									<span className="day">
-										Day 10
-									</span>
-									<h5><b>Trek from Gorak Shep to Pheriche (4,288m) via Kala Patthar (5,545m): 7- 8
-										hours</b>
-									</h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p>
-									<b>Overnight stay at Pheriche.</b>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										11
-									</span>
-									<span className="day">
-										Day 11
-									</span>
-									<h5><b>Trek from Pheriche to Namche Bazaar: 8 hours trek</b></h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p>
-									<b>Overnight stay at Namche Bazaar.</b>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										12
-									</span>
-									<span className="day">
-										Day 12
-									</span>
-									<h5><b>Trek from Namche Bazaar to Lukla: 8 hours trek</b></h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p>
-									<b>Overnight stay at Lukla.</b>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										13
-									</span>
-									<span className="day">
-										Day 13
-									</span>
-									<h5><b>Fly to Manthali from Lukla: 35 min flight.From Manthali to kathmandu by private
-										luxury vehicle</b></h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p>
-									<b>Overnight stay at .</b>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-					<div className="iternary">
-						<details>
-							<summary>
-								<div className="Heading">
-									<span className="num">
-										14
-									</span>
-									<span className="day">
-										Day 14
-									</span>
-									<h5><b>Leisure day and Nepali cultural farewell dinner.</b></h5>
-								</div>
-							</summary>
-							<div className="details-content">
-								<p>
-
-									<b>Overnight stay at Kathmandu.</b>
-								</p>
-							</div>
-						</details>
-					</div>
-					<hr />
-
+						
+						)
+					})}
+					
+					
 
 					<br />
 					<div className="inclusions">
 						<h4><b>What's Included</b></h4>
-						<span><i className="fa-regular fa-check"></i></span>
-						<span>Airport pickup and drop off in private luxury vehicle.</span>
+						{inc_exc.map((inc_exc, i)=>{
+						return(
+							<>
+							<span><i className="fa fa-check-circle-o fa-1x"></i></span>
+						<span>{inc_exc.included}</span>
 						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>3 ster category hotel accommodation in Kathmandu with BB plan</span>
-						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>Kathmandu sight seeing with professional English speaking tour guide.</span>
-						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>One government registered licensed experienced trekking guide.</span>
-						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>An assistant guide to take care of the group/porters if group size is more than 10 pax.</span>
-						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>1 Sharing high altitude porter for 2 travelers to carry your luggage (weight limit
-							15kg).</span>
-						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>Clean and neat accommodation in trekking lodges on twin/double sharing basis with BLD plan.</span>
-						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>Daily 3 times meals (br/eakfast, lunch and dinner) during the trekking.</span>
-						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>Kathmandu - Lukla - Kathmandu round domestic flight.</span>
-						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>All necessary trekking permits for Everest Base Camp trek.</span>
-						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>Salary, food and accommodation of your guide and porters.</span>
-						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>Insurance and trekking gear for your guide and porters.</span>
-						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>First-aid kit box.</span>
-						<br />
-						<span><i className="fa fa-check-circle-o fa-1x"></i></span>
-						<span>All local tax, vat etc.</span>
-						<br />
+							</>
+						)
+					})}
+						
 						<br />
 						<h4><b>What's Not Included</b></h4>
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>Nepal entry visa fee and international airfare.</span>
+						{inc_exc.map((inc_exc, i)=>{
+						return(
+							<>
+							<span><i className="fa fa-times fa-1x"></i></span>
+						<span>{inc_exc.excluded}</span>
 						<br />
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>Lunch and dinner while you are in kathmandu.</span>
-						<br />
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>Hotel upgrade and any addons.</span>
-						<br />
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>Extra stay in Kathmandu.</span>
-						<br />
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>Personal travel insurance , insurance covering medical and high altitude rescue costs.</span>
-						<br />
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>Guided sightseeing monuments entrance fees in Kathmandu.</span>
-						<br />
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>All the bar bills, beverages such as coke, fanta, mineral water.</span>
-						<br />
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>Hot shower, laundary, hot water, internet, phone calls during trekking.</span>
-						<br />
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>Personal trekking gear and equipments.</span>
-						<br />
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>Filming devices: Camera, drone permit fee.</span>
-						<br />
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>Any cost that arise due to change of itinerary, flight delay, natural calamities etc.</span>
-						<br />
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>Gratitude and tips for guide and porters.</span>
-						<br />
-						<span><i className="fa fa-times fa-1x"></i></span>
-						<span>Private and Customized trip.</span>
-						<br />
+							</>
+						)
+					})}
+						
 					</div>
 				</div>
 				<h1 id='demo'></h1>
-				<div className="main-sec-1">
+				<aside className="main-sec-1">
+					<div className='Sticky_side'>
 					<div className="offer">
 						<b>
 							<h4 className="price">$1499</h4>
@@ -613,8 +279,10 @@ export default function Everest() {
 							<br />
 						</div>
 					</div>
-				</div>
+					</div>
+				</aside>
 
+			</div>
 			</div>
 
 		</div >

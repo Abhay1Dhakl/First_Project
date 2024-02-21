@@ -1,15 +1,32 @@
-import React, { useState } from 'react'
-import './card.css'
-import Menu from './Menu'
+import React, { useState } from 'react';
+import './card.css';
+import { useEffect } from 'react';
+import axios from "axios"
 const AnimatedaCard = () => {
-    console.log(Menu);
-    const [items, setItems] = useState(Menu);
+    
+    const[cards, set_CardsData] = useState([])
+    const[card_var,set_cardVar] = useState([])
+    
+    useEffect(() => {
+        async function getalldata (){
+           try{
+               const cardData = await axios.get("http://127.0.0.1:8000/api/user/cards/")
+               console.log(cardData.data)
+               set_CardsData(cardData.data)
+               set_cardVar(cardData.data)
+           }catch(error){ 
+   
+           }
+        }
+        getalldata ()
+       },[])
+
     const filterItems = (cateItems) => {
-        const updateItems = Menu.filter((curElm)=>
+        const updateItems = card_var.filter((curElm)=>
         {
             return curElm.category === cateItems;
         });
-        setItems(updateItems);
+        set_CardsData(updateItems);
     }
     return (
         <div >
@@ -21,13 +38,13 @@ const AnimatedaCard = () => {
                     <button className="btn btn-warning" onClick={()=>filterItems("tibet")}>Tibet</button>
                     <button className="btn btn-warning"onClick={()=>filterItems("bhutan")}>Bhutan</button>
                     <button className="btn btn-warning"onClick={()=>filterItems("india")}>India</button>
-                    <button className="btn btn-warning"onClick={()=>setItems(Menu)}>All</button>
+                    <button className="btn btn-warning"onClick={()=>set_CardsData(card_var)}>All</button>
                 </div>
             </div>
             <div className="main_animated">
              
                 {
-                    items.map((elems) => {
+                    cards.map((elems) => {
                         return (
                             <>
                                 <div className="card_animated">
@@ -40,7 +57,7 @@ const AnimatedaCard = () => {
                                         <div className="coverFront">
                                             <div >
                                                 <h5>{elems.topic}</h5>
-                                                <img src={elems.photo} alt="" />
+                                                <img src={elems.photo} alt={elems.heading} />
                                             </div>
                                             <div className="coverBack">
                                             </div>

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from account.models import User
-from .models import BookingTable
+from .models import BookingTable, EverestInformation,EverestItinerary,Everest_Included_Ornot,Cards,Pokhara_Included_Ornot,PokharaInformation,PokharaItinerary
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 class UserModelAdmin(BaseUserAdmin):
@@ -31,7 +31,32 @@ class UserModelAdmin(BaseUserAdmin):
 class bookTable(admin.ModelAdmin):
   list_display = ['date','child','adult']
 
-  
+@admin.register(EverestInformation)
+class everest_info(admin.ModelAdmin):
+  list_display = ['para1','para2']
+
+@admin.register(EverestItinerary)
+class everest_itinerary(admin.ModelAdmin):
+  list_display = ['topic','details']
+
+@admin.register(Everest_Included_Ornot)
+class everest_inc_exc(admin.ModelAdmin):
+  list_display = ['included', 'excluded']
+
+@admin.register(Cards)
+class cards_info(admin.ModelAdmin):
+  list_display= ['heading','descr', 'topic','photo','category']
+
+@admin.register(PokharaInformation)
+class everest_info(admin.ModelAdmin):
+  list_display = ['para1','para2']
+
+@admin.register(PokharaItinerary)
+class everest_itinerary(admin.ModelAdmin):
+  list_display = ['topic','details']
+
+@admin.register(Pokhara_Included_Ornot)
+class everest_inc_exc(admin.ModelAdmin):
+  list_display = ['included', 'excluded']
 # Now register the new UserModelAdmin...
 admin.site.register(User, UserModelAdmin)
-

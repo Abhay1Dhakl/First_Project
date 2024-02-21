@@ -1,13 +1,13 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from account.serializers import SendPasswordResetEmailSerializer, UserChangePasswordSerializer, UserLoginSerializer, UserPasswordResetSerializer, UserProfileSerializer, UserRegistrationSerializer,bookingSerializer
+from account.serializers import SendPasswordResetEmailSerializer, UserChangePasswordSerializer, UserLoginSerializer, UserPasswordResetSerializer, UserProfileSerializer, UserRegistrationSerializer,bookingSerializer,everest_infoSerializer,Everest_ItinerarySerializer,Everest_Included_OrnotSerializer, Cards_Serializers,Pokhara_infoSerializer,Pokhara_ItinerarySerializer,Pokhara_Included_OrnotSerializer
 from django.contrib.auth import authenticate
 from account.renderers import UserRenderer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import ListAPIView
-
+from .models import EverestInformation, EverestItinerary ,Everest_Included_Ornot,Cards, Pokhara_Included_Ornot, PokharaItinerary,PokharaInformation
 
 # Generate Token Manually
 def get_tokens_for_user(user):
@@ -77,3 +77,31 @@ class bookingList(APIView):
     user = serializer.save()
     token = get_tokens_for_user(user)
     return Response({'token':token, 'msg':'Booked Successfully'}, status=status.HTTP_201_CREATED)
+
+class ever_infoView(ListAPIView):
+  queryset = EverestInformation.objects.all()
+  serializer_class = everest_infoSerializer
+ 
+class ever_itineraryView(ListAPIView):
+  queryset = EverestItinerary.objects.all()
+  serializer_class = Everest_ItinerarySerializer
+
+class Everest_Included_Ornot_View(ListAPIView):
+  queryset = Everest_Included_Ornot.objects.all()
+  serializer_class = Everest_Included_OrnotSerializer
+
+class Cards_view(ListAPIView):
+  queryset = Cards.objects.all()
+  serializer_class = Cards_Serializers
+
+class Pokhara_infoView(ListAPIView):
+  queryset = PokharaInformation.objects.all()
+  serializer_class = everest_infoSerializer
+ 
+class Pokhara_itineraryView(ListAPIView):
+  queryset = PokharaItinerary.objects.all()
+  serializer_class = Everest_ItinerarySerializer
+
+class Pokhara_Included_Ornot_View(ListAPIView):
+  queryset = Pokhara_Included_Ornot.objects.all()
+  serializer_class = Everest_Included_OrnotSerializer

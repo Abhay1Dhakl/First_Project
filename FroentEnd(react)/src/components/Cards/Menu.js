@@ -1,9 +1,10 @@
+
 const Menu = [
 {
     heading:"Delhi",
     descr:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam perferendis obcaecati doloribus beatae quia deleniti ipsam, iste harum at sint, ab incidunt veniam error voluptatum! Ab, odit. Corporis, laudantium accusantium.",
     topic:"Delhi",
-    photo:"SliderImages/photo1.jpg",
+    photo:"Card_Images/Delhi.jpg",
     category: "india"
 },
 {
@@ -17,14 +18,14 @@ const Menu = [
     heading:"Bouddha",
     descr:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam perferendis obcaecati doloribus beatae quia deleniti ipsam, iste harum at sint, ab incidunt veniam error voluptatum! Ab, odit. Corporis, laudantium accusantium.",
     topic:"Bouddha",
-    photo: 'SliderImages/photo1.jpg',
+    photo: 'Card_Images/Bouddha.jpeg',
     category: "nepal"
 },
 {
     heading:"Patan",
     descr:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam perferendis obcaecati doloribus beatae quia deleniti ipsam, iste harum at sint, ab incidunt veniam error voluptatum! Ab, odit. Corporis, laudantium accusantium.",
     topic:"Patan",
-    photo:'SliderImages/photo1.jpg',
+    photo:'Card_Images/Patan.jpeg',
     category: "nepal"
 },
 {
@@ -38,7 +39,7 @@ const Menu = [
     heading:"Mumbai",
     descr:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam perferendis obcaecati doloribus beatae quia deleniti ipsam, iste harum at sint, ab incidunt veniam error voluptatum! Ab, odit. Corporis, laudantium accusantium.",
     topic:"Mumbai",
-    photo: 'SliderImages/photo1.jpg',
+    photo: 'Card_Images/Mumbai.jpeg',
     category: "india"
 },
 ];
