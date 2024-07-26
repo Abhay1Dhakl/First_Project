@@ -1,5 +1,9 @@
 from django.urls import path
+<<<<<<< HEAD
 from account.views import SendPasswordResetEmailView, UserChangePasswordView, UserLoginView, UserProfileView, UserRegistrationView, UserPasswordResetView,bookingList,ever_infoView,ever_itineraryView,Everest_Included_Ornot_View,Cards_view,Pokhara_infoView,Pokhara_itineraryView,Pokhara_Included_Ornot_View
+=======
+from account.views import SendPasswordResetEmailView, UserChangePasswordView, UserLoginView, UserProfileView, UserRegistrationView, UserPasswordResetView,bookingList,ever_infoView,ever_itineraryView,Everest_Included_Ornot_View,Cards_view,Pokhara_infoView,Pokhara_itineraryView,Pokhara_Included_Ornot_View,handle_payment, check_payment_status
+>>>>>>> 04a759a (third commit)
 urlpatterns = [
     path('register/', UserRegistrationView.as_view(), name='register'),
     path('login/', UserLoginView.as_view(), name='login'),
@@ -15,5 +19,10 @@ urlpatterns = [
     path('Pokhara_info/',Pokhara_infoView.as_view(), name='Pokhara_info'),
     path('Pokhara_itinerary/',Pokhara_itineraryView.as_view(), name='Pokhara_itinerary'),
     path('Pokhara_inc_exc/',Pokhara_Included_Ornot_View.as_view(), name='Pokhara_inc_exc'),
+<<<<<<< HEAD
+=======
+    path('handle-payment/', handle_payment, name='handle_payment'),
+    path('check-payment-status/', check_payment_status, name='check_payment_status'),
+>>>>>>> 04a759a (third commit)
     ]
    

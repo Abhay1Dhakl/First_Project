@@ -8,6 +8,12 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import ListAPIView
 from .models import EverestInformation, EverestItinerary ,Everest_Included_Ornot,Cards, Pokhara_Included_Ornot, PokharaItinerary,PokharaInformation
+<<<<<<< HEAD
+=======
+from django.http import JsonResponse
+import requests
+from django.shortcuts import render
+>>>>>>> 04a759a (third commit)
 
 # Generate Token Manually
 def get_tokens_for_user(user):
@@ -104,4 +110,77 @@ class Pokhara_itineraryView(ListAPIView):
 
 class Pokhara_Included_Ornot_View(ListAPIView):
   queryset = Pokhara_Included_Ornot.objects.all()
+<<<<<<< HEAD
   serializer_class = Everest_Included_OrnotSerializer
+=======
+  serializer_class = Everest_Included_OrnotSerializer
+
+
+# def initiate_payment(request):
+#     # Example payload for initiating payment
+#     payload = {
+#         'amount': 1000,  # Example amount
+#         'order_id': 'ORDER123'  # Example order ID
+#     }
+
+#     # Replace 'YOUR_INITIATION_ENDPOINT' with the actual initiation endpoint provided by eSewa
+#     initiation_endpoint = 'https://rc-epay.esewa.com.np/api/epay/main/v2/form'
+
+#     try:
+#         response = requests.post(initiation_endpoint, json=payload)
+#         if response.status_code == 200:
+#             return JsonResponse(response.json())
+#         else:
+#             return JsonResponse({"error": "Failed to initiate payment"}, status=500)
+#     except Exception as e:
+#         return JsonResponse({"error": str(e)}, status=500)
+
+# def verify_payment(request):
+#     # Example payload for verifying payment
+#     payload = {
+#         'payment_id': request.POST.get('payment_id'),  # Example: Get payment ID from request
+#         'amount': request.POST.get('amount')  # Example: Get amount from request
+#     }
+
+#     # Replace 'YOUR_VERIFICATION_ENDPOINT' with the actual verification endpoint provided by eSewa
+#     verification_endpoint = 'https://rc-epay.esewa.com.np/api/epay/main/v2/form'
+
+#     try:
+#         response = requests.post(verification_endpoint, json=payload)
+#         if response.status_code == 200:
+#             return JsonResponse(response.json())
+#         else:
+#             return JsonResponse({"error": "Failed to verify payment"}, status=500)
+#     except Exception as e:
+#         return JsonResponse({"error": str(e)}, status=500)
+
+def handle_payment(request):
+    # Handle payment form submission here
+    if request.method == 'POST':
+        # Retrieve form data from request.POST
+        amount = request.POST.get('amount')
+        tax_amount = request.POST.get('tax_amount')
+        total_amount = request.POST.get('total_amount')
+        transaction_uuid = request.POST.get('transaction_uuid')
+        # Process payment and generate response
+        
+        # For now, let's return a simple success response
+        return JsonResponse({"status": "SUCCESS", "message": "Payment received", "amount": amount})
+    else:
+        return JsonResponse({"error": "Invalid request method"}, status=405)
+
+def check_payment_status(request):
+    # Handle status check API here
+    if request.method == 'GET':
+        # Retrieve product code, total amount, and transaction UUID from request.GET
+        product_code = request.GET.get('product_code')
+        total_amount = request.GET.get('total_amount')
+        transaction_uuid = request.GET.get('transaction_uuid')
+        
+        # Check payment status and generate response
+        
+        # For now, let's return a simple success response
+        return JsonResponse({"status": "SUCCESS", "message": "Payment successful", "transaction_code": "0004T5I"})
+    else:
+        return JsonResponse({"error": "Invalid request method"}, status=405)
+>>>>>>> 04a759a (third commit)

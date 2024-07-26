@@ -9,8 +9,16 @@ import { useBookingMutation } from '../Serve/userAuthapi';
 import { useDispatch } from 'react-redux';
 import { TextField, Button, Box, Alert, Typography, CircularProgress } from '@mui/material';
 import { getToken, removeToken } from '../Serve/LocalStorageService';
+<<<<<<< HEAD
 import axios from "axios"
 export default function Everest() {
+=======
+import KhaltiCheckout from "khalti-checkout-web";
+import config from '../Payment/KhaltiConfig';
+import axios from "axios"
+export default function Everest() {
+	let checkout = new KhaltiCheckout(config);
+>>>>>>> 04a759a (third commit)
 	const[inc_exc, set_inc_exc] = useState([])
 	const [userData, setUserData] = useState([])
 	const [itineraryData, set_itineraryData] = useState([])
@@ -261,7 +269,11 @@ export default function Everest() {
 							<TextField margin='normal' required fullWidth id='child' name='child' label='child' type='number'/>
 							<TextField margin='normal' required fullWidth id='adult' name='adult' label='adult' type='number'/>
 							<Box textAlign='center'>
+<<<<<<< HEAD
 								{isLoading ? <CircularProgress /> : <Button type='submit' variant='contained' sx={{ mt: 3, mb: 2, px: 5 }}>Book</Button>}
+=======
+								{isLoading ? <CircularProgress /> : <Button type='submit' variant='contained' sx={{ mt: 3, mb: 2, px: 5 }} onClick={()=> checkout.show({amount: 1000})}>Pay with khalti</Button>}
+>>>>>>> 04a759a (third commit)
 							</Box>
 
 						</Box>

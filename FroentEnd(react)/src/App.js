@@ -11,17 +11,31 @@ import Everest from "./components/Sub_pages/Everest";
 import Pokhara from "./components/Sub_pages/Pokhara"
 import Footer from "./components/Header_Footer/Footer";
 import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+<<<<<<< HEAD
 import Main from "./components/new_page/Main"
+=======
+import Main from "./components/new_page/Main";
+
+import Khalti from './components/Payment/Khalti';
+>>>>>>> 04a759a (third commit)
 function App() {
   const {access_token} = useSelector(state => state.auth)
   return (
     <>
+<<<<<<< HEAD
+=======
+       
+>>>>>>> 04a759a (third commit)
       <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={!access_token ? <LoginReg /> : <Home></Home>}>  </Route>
           <Route path="/Everest" element={!access_token ? <LoginReg /> : <Everest></Everest>}/> 
+<<<<<<< HEAD
           <Route path="/Pokhara" element={!access_token ? <LoginReg /> : <Pokhara></Pokhara>}/> 
+=======
+          <Route path="/Pokhara" element={!access_token ? <LoginReg /> : <Khalti />}/> 
+>>>>>>> 04a759a (third commit)
           <Route path="/Annapurna" element ={!access_token ? <LoginReg /> : <Main></Main>}></Route>
           <Route path="contact" element={!access_token ? <LoginReg /> : <Contact></Contact>} />
           <Route path="login" element={!access_token ? <LoginReg /> : <Navigate to="/"/>} />
