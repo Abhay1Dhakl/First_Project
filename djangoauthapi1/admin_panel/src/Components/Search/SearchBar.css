@@ -1,0 +1,33 @@
+.search_result{
+    position: absolute;
+    width: 198px;
+    height: auto;
+    background: #ffffff;
+    text-align: center;
+    color: black;
+    border-radius: 8px;
+    top: 66px;
+}
+
+.search_result :hover{
+    text-decoration: none;
+    color: aqua;
+}
+
+.search_Input{
+    width: 200px;
+    border-radius: 11px;
+    border-color: #9e9eab;
+    text-align: center;
+
+}
+
+.search_input_div{
+    display: flex;
+    margin-top: 20px;
+}
+
+.hr_decoration{
+    size: 5px;
+    height: -15px;
+}

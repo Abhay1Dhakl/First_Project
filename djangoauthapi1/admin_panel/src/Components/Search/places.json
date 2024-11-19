@@ -1,0 +1,22 @@
+[
+    {
+        "visitingPlace":"Everest",
+        "link":"http://localhost:3000/Everest"
+    },
+    {
+        "visitingPlace":"Annapurna",
+        "link":"http://localhost:3000/Everest"
+    },
+    {
+        "visitingPlace":"Delhi",
+        "link":"http://localhost:3000/Everest"
+    },
+    {
+        "visitingPlace":"Kathmandu",
+        "link":"http://localhost:3000/Everest"
+    },
+    {
+        "visitingPlace":"Pokhara",
+        "link":"http://localhost:3000/Pokhara"
+    }
+]

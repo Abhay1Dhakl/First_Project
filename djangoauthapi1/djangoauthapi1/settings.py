@@ -64,7 +64,7 @@ ROOT_URLCONF = 'djangoauthapi1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+         'DIRS': [os.path.join(BASE_DIR, 'admin_panel', 'public')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

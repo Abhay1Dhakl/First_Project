@@ -1,0 +1,194 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background: #ebe9e9;
+}
+
+header {
+  width: 100%;
+  height: 70px;
+  background: #fff;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+}
+
+header .row{
+    margin:0px !important;
+}
+header .logo img{
+  width: 180px;
+  height: 85px;
+  margin-left: 30px;
+}
+
+header button.roundcircle{
+    min-width: 40px !important;
+    width: 40px; 
+    height: 40px;
+    border-radius: 20px;
+    background: #f0f5ff !important;
+    color: #292929;
+    margin-right: 20px;
+}
+
+header button.roundcircle{
+    color: #292929;
+}
+
+.searchBox{
+    width: 400px;
+    height: 40px;
+    background: #f0f5ff;
+    border-radius: 6px;
+    padding: 3px 15px;
+}
+
+.searchBox input{
+    background: transparent;
+    border: 0px;
+    outline: none;
+    padding-left: 5px;
+}
+
+.profile .userImg .roundcircle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+}
+
+.main .sideBarwrapper{
+  width: 20%;
+  flex: 0 0 20%; 
+  transition: all 0.3s ease-in-out;
+}
+
+.main .sideBarwrapper .sidebar{
+  width: 20%;
+  height: 95vh;
+  position: fixed;
+  top: 70px;
+  left: 0px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: white;
+}
+
+.main .sideBarwrapper .sidebar ul{
+  margin-bottom: 10px;
+}
+
+.main .sideBarwrapper .sidebar ul li{
+  list-style: none;
+  font-size: 22px;
+  
+}
+
+.main .sideBarwrapper .sidebar ul li button{
+  color: black;
+  text-align: left;
+  justify-content: left;
+  margin: 25px;
+  height: 50px;
+}
+
+.main .sideBarwrapper .sidebar ul li button .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    margin-right: 25px;
+}
+
+.main .sideBarwrapper .sidebar ul li button.active{
+  background: #ebe9e9 !important; 
+}
+.main .sideBarwrapper .sidebar ul li button .icon svg{
+  color: black;
+  opacity: 0.8;
+  font-size: 22px;
+}
+
+.main .sideBarwrapper .sidebar ul li button .arrow{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin-left: 6px;
+  top: 74px;
+}
+
+.main .sideBarwrapper .sidebar ul li button .arrow svg{
+  color: black;
+  opacity: 0.8;
+  font-size: 22px;
+}
+
+.main .sideBarwrapper .sidebar ul .sub-menu{
+    padding: 0px 45px;
+    transition: all 0.3s ease-in-out;
+}
+
+.main .sideBarwrapper .sidebar ul .sub-menu li{
+    list-style: none;
+    font-size: 18px;
+    border-left: 1px solid #292929;
+    padding-left: 25px;
+}
+
+.main .sideBarwrapper .sidebar ul .sub-menu li a{
+      color: #292929;
+      text-decoration: none;
+      display: block;
+      padding: 10px 0px;
+}
+
+.main .sideBarwrapper .sidebar ul .sub-menu::before{
+  content: '';
+  width: 1px;
+  height: 95%;
+  position: absolute;
+  top: 0px;
+  left: 25px;
+  background:rgb(0,0,0,0,2);
+}
+
+.main .sideBarwrapper .sidebar ul .sub-menu li:hover{
+  color: #95c3e2;
+}
+
+.main .sideBarwrapper .sidebar ul .submenuWrapper{
+  transition: all 0.3s ease-in-out;
+}
+.main .sideBarwrapper .sidebar ul .submenuWrapper.colapsed{
+      height: 0px;
+ 
+}
+.main .sideBarwrapper .sidebar ul .submenuWrapper.colapsed .sub-menu{
+  opacity: 0;
+}
+.main .sideBarwrapper .sidebar ul .submenuWrapper .colapse{
+  height: auto;
+
+}
+.main .sideBarwrapper .sidebar ul .submenuWrapper.colapse .sub-menu{
+  opacity: 1;
+}
+
+.right-content{
+  padding: 85px 25px;
+}
+
+.table{
+  background: #95c3e2;
+}

@@ -9,20 +9,16 @@ import { useBookingMutation } from '../Serve/userAuthapi';
 import { useDispatch } from 'react-redux';
 import { TextField, Button, Box, Alert, Typography, CircularProgress } from '@mui/material';
 import { getToken, removeToken } from '../Serve/LocalStorageService';
-<<<<<<< HEAD
 import axios from "axios"
-export default function Everest() {
-=======
 import KhaltiCheckout from "khalti-checkout-web";
 import config from '../Payment/KhaltiConfig';
-import axios from "axios"
+import StarRating from './StarRating';
 export default function Everest() {
 	let checkout = new KhaltiCheckout(config);
->>>>>>> 04a759a (third commit)
+
 	const[inc_exc, set_inc_exc] = useState([])
 	const [userData, setUserData] = useState([])
 	const [itineraryData, set_itineraryData] = useState([])
-
 	useEffect(() => {
 	 async function getalldata (){
 		try{
@@ -39,7 +35,7 @@ export default function Everest() {
 	useEffect(() => {
 		async function getdata (){
 		   try{
-			   const itineraryData = await axios.get("http://127.0.0.1:8000/api/user/everest_itinerary/")
+			   const itineraryData = await axios.get("http://127.0.0.1:8000/api/user/itinerary/")
 			   console.log(itineraryData.data)
 			   set_itineraryData(itineraryData.data)
 		   }catch(error){ 
@@ -205,7 +201,7 @@ export default function Everest() {
 					<br />
 					<h1 className="EBC-iter">Itinerary of Everest Base Camp Treak</h1>
 					
-					{itineraryData.map((itineraryData, i)=>{
+					{itineraryData && Array.isArray(itineraryData) && itineraryData.map((itineraryData, i)=>{
 						return(
 							<div className="iternary">
 						<details>
@@ -269,11 +265,11 @@ export default function Everest() {
 							<TextField margin='normal' required fullWidth id='child' name='child' label='child' type='number'/>
 							<TextField margin='normal' required fullWidth id='adult' name='adult' label='adult' type='number'/>
 							<Box textAlign='center'>
-<<<<<<< HEAD
+
 								{isLoading ? <CircularProgress /> : <Button type='submit' variant='contained' sx={{ mt: 3, mb: 2, px: 5 }}>Book</Button>}
-=======
+
 								{isLoading ? <CircularProgress /> : <Button type='submit' variant='contained' sx={{ mt: 3, mb: 2, px: 5 }} onClick={()=> checkout.show({amount: 1000})}>Pay with khalti</Button>}
->>>>>>> 04a759a (third commit)
+
 							</Box>
 
 						</Box>
@@ -294,6 +290,10 @@ export default function Everest() {
 					</div>
 				</aside>
 
+			</div>
+			<div className='star-rating'>
+				<h1>Give rating</h1>
+				<StarRating/>
 			</div>
 			</div>
 

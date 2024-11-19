@@ -38,7 +38,7 @@ const Dashboard = () => {
     }
   },[data, isSuccess, dispatch])
 
-
+  console.log("dashboard data",userData)
   const handleLogout = () => {
     dispatch(unSetUserInfo({name:"", email:""}))
     dispatch(unSetUserToken({access_token: null}))
